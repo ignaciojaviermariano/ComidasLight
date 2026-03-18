@@ -1,0 +1,28 @@
+<section class="menu-section">
+  <h1>Nuestra Carta</h1>
+  
+  
+  <div class="packs-selector">
+    <p class="selector-label">Elige tu pack:</p>
+    <div class="packs-buttons">
+      <button 
+        *ngFor="let pack of packService.packs"
+        class="pack-btn"
+        (click)="seleccionarPack(pack.cantidad)"
+        [class.active]="packActual === pack.cantidad"
+      >
+        <span class="pack-cantidad">{{ pack.cantidad }}</span>
+        <span class="pack-viandas">viandas</span>        
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="menu-grid">
+    <app-menucard  
+      *ngFor="let categoria of menuCategories"  
+      [nombre]="categoria.titulo"
+      [platos]="categoria.items">
+    </app-menucard>
+  </div>
+</section>

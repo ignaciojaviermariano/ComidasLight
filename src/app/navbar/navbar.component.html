@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-content">
+      
+      <div class="logo">
+        <button class="logo-btn" (click)="navigateToSection('hero-section')">
+          <img src="assets/images/logo.png" alt="Comidas Light Logo" class="logo-img">
+          <span class="handwritten handwritten-medium">{{ businessName }}</span>
+        </button> 
+      </div>
+      
+      
+      <button 
+        class="menu-toggle" 
+        [class.active]="menuOpen"
+        (click)="menuOpen = !menuOpen"
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      
+      <div class="nav-menu" [class.active]="menuOpen">
+        <button 
+          *ngFor="let item of menuItems" 
+          class="nav-btn"
+          (click)="navigateToSection(item.section); menuOpen = false"
+        >
+          {{ item.label }}
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

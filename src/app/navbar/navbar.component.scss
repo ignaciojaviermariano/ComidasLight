@@ -1,0 +1,378 @@
+
+@import '../../styles/mixins';
+
+
+$primary-green: #2d5016;
+$light-green: #7fb069;
+$medium-green: #6a994e;
+$white: #ffffff;
+$navbar-height: 80px;
+$mobile-menu-width: 280px;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin smooth-transition($properties: all, $duration: 0.3s) {
+  transition: $properties $duration ease;
+}
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba($white, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  padding: 1rem 0;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    
+    @include respond-max('lg') {
+      padding: 0 1.5rem;
+    }
+    
+    @include respond-max('sm') {
+      padding: 0 1rem;
+    }
+  }
+
+  .nav-content {
+    @include flex-center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}
+
+
+.logo-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(45, 95, 63, 0.1) 0%, rgba(139, 195, 74, 0.1) 100%);
+    transition: left 0.3s ease;
+    z-index: 0;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    background: rgba(45, 95, 63, 0.08);
+    box-shadow: 0 4px 12px rgba(45, 95, 63, 0.15);
+    
+    &::before {
+      left: 0;
+    }
+    
+    .logo-img {
+      transform: scale(1.05) rotate(-5deg);
+    }
+    
+    .handwritten {
+      color: #7fb069;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid #7fb069;
+    outline-offset: 2px;
+  }
+  
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.logo-img {
+  height: 50px;
+  width: auto;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  @include respond-max('md') {
+    height: 40px;
+  }
+  
+  @include respond-max('sm') {
+    height: 35px;
+  }
+}
+
+.handwritten {
+  font-family: 'Brush Script MT', cursive;
+  color: #2d5016;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  @include respond-max('md') {
+    font-size: 1.3rem;
+  }
+  
+  @include respond-max('sm') {
+    font-size: 1.1rem;
+  }
+  
+  &-medium {
+    font-weight: 500;
+  }
+}
+
+// ========== MENÚ HAMBURGUESA ==========
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+  @include smooth-transition;
+
+  span {
+    width: 28px;
+    height: 3px;
+    background: $primary-green;
+    border-radius: 3px;
+    @include smooth-transition(all);
+  }
+
+  &.active {
+    span {
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+    }
+  }
+
+  &:hover span {
+    background: $light-green;
+  }
+  
+  @include respond-max('md') {
+    display: flex;
+  }
+}
+
+
+.nav-menu {
+  @include flex-center;
+  gap: 0.5rem;
+  
+  @include respond-max('md') {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: $mobile-menu-width;
+    
+   
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-cream) 100%);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-md);
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 2rem;
+
+    &.active {
+      right: 0;
+    }
+
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0);
+      pointer-events: none;
+      transition: background 0.4s ease;
+    }
+
+    &.active::before {
+      background: rgba(0, 0, 0, 0.3);
+      pointer-events: auto;
+    }
+  }
+  
+  @include respond-max('sm') {
+    width: 250px;
+  }
+}
+
+
+// ========== BOTONES DE NAVEGACIÓN ==========
+.nav-btn {
+  background: transparent;
+  border: 2px solid transparent;
+  color: $primary-green;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  @include smooth-transition;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, $light-green 0%, $medium-green 100%);
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: $white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($primary-green, 0.2);
+
+    &::before {
+      width: 200%;
+      height: 200%;
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $light-green;
+    outline-offset: 2px;
+  }
+  
+  @include respond-max('lg') {
+    font-size: 0.9rem;
+    padding: 0.65rem 1.2rem;
+  }
+  
+  // Móvil: botones más visibles
+  @include respond-max('md') {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    
+    // ← Botones con borde y fondo suave en móvil
+    background: rgba($primary-green, 0.05);
+    border: 2px solid $light-green;
+    color: $primary-green;
+    
+    &:hover {
+      background: linear-gradient(135deg, $light-green 0%, $medium-green 100%);
+      color: $white;
+      border-color: $medium-green;
+      box-shadow: 0 6px 16px rgba($light-green, 0.3);
+    }
+    
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        animation: slideInRight 0.3s ease forwards;
+        animation-delay: #{$i * 0.1}s;
+        opacity: 0;
+      }
+    }
+  }
+  
+  @include respond-max('sm') {
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    
+    &::before {
+      transition: none;
+    }
+  }
+}
+
+.nav-menu.active .nav-btn {
+  @include respond-max('md') {
+    opacity: 1;
+  }
+}
+
+// ========== ANIMACIONES ==========
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// ========== NAVBAR CON SCROLL ==========
+.navbar.scrolled {
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.12);
+
+  .logo-img {
+    height: 40px;
+  }
+
+  .handwritten {
+    font-size: 1.3rem;
+  }
+}
+
+// ========== PRINT STYLES ==========
+@media print {
+  .navbar {
+    position: relative;
+    box-shadow: none;
+  }
+}
