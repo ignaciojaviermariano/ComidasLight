@@ -11,6 +11,7 @@ import { DeliveryIconComponent } from "../shared/icons/delivery.icon/delivery.ic
 import { PlateIconComponent } from '../shared/icons/plate.icon/plate.icon.component';
 import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
 import { PackSelectorBarComponent } from "../pack-selector-bar/pack-selector-bar.component";
+import { ConfigService } from '../services/ConfigService'; 
 
 @Component({
   selector: 'app-home',
@@ -25,8 +26,7 @@ export class HomeComponent {
   instagramLink: string;
   facebookLink: string;
   businessName: string;
-  
-  
+
   benefits = [
     {
       id: 'healthy',
@@ -49,10 +49,11 @@ export class HomeComponent {
       description: 'Servicio de delivery en La Plata y alrededores. Tu alimentación sin complicaciones.'
     }
   ];
-isMenuOpen: any;
-secciones: any;
 
-  constructor() {
+  isMenuOpen: any;
+  secciones: any;
+
+  constructor(public config: ConfigService) { // 👈 NUEVO: inyectamos ConfigService
     const phone = environment.whatsappNumber;
     const message = encodeURIComponent(environment.whatsappMessage);
     this.whatsappLink = `https://wa.me/${phone}?text=${message}`;
