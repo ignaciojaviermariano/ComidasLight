@@ -26,10 +26,7 @@
     <div class="benefits-grid">
       <div class="benefit-card" *ngFor="let benefit of benefits">
         <div class="benefit-icon">
-          <app-icon-healthy-food *ngIf="benefit.id === 'healthy'"></app-icon-healthy-food>
-          <app-icon-frozen *ngIf="benefit.id === 'frozen'"></app-icon-frozen>
-          <app-icon-nutritionist *ngIf="benefit.id === 'nutritionist'"></app-icon-nutritionist>
-          <app-icon-delivery *ngIf="benefit.id === 'delivery'"></app-icon-delivery>
+          <img [src]="benefit.icon" [alt]="benefit.title" width="64" height="64">
         </div>
         <h3>{{ benefit.title }}</h3>
         <p>{{ benefit.description }}</p>

@@ -31,21 +31,25 @@ export class HomeComponent {
   benefits = [
     {
       id: 'healthy',
+      icon:'assets/images/comida-saludable.png',
       title: 'Viandas Saludables',
       description: 'Hiposódicas, hipograsas e hipocalóricas. Perfectas para tu plan de alimentación.'
     },
     {
       id: 'frozen',
+      icon:'assets/images/frezzer.png',
       title: 'Freezadas y Frescas',
       description: 'Elaboradas con los mejores ingredientes. Listas para consumir cuando las necesites.'
     },
     {
       id: 'nutritionist',
+      icon: 'assets/images/nutricionista-icon.png',
       title: 'Respaldo Nutricional',
       description: 'Asesoramiento personalizado con nuestra nutricionista. Más de 15 años de experiencia.'
     },
     {
       id: 'delivery',
+      icon:'assets/images/deliver2.png',
       title: 'Entrega a Domicilio',
       description: 'Servicio de delivery en La Plata y alrededores. Tu alimentación sin complicaciones.'
     }
