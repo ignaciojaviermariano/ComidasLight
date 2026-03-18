@@ -12,11 +12,12 @@ import { PlateIconComponent } from '../shared/icons/plate.icon/plate.icon.compon
 import { HowItWorksComponent } from '../how-it-works/how-it-works.component';
 import { PackSelectorBarComponent } from "../pack-selector-bar/pack-selector-bar.component";
 import { ConfigService } from '../services/ConfigService'; 
+import { PromocionesComponent } from '../promociones/promociones.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, ɵEmptyOutletComponent, MenusectionComponent, NavbarComponent, HealthyFoodIconComponent, FrozenIconComponent, NutritionistIconComponent, DeliveryIconComponent, PlateIconComponent, HowItWorksComponent, PackSelectorBarComponent],
+  imports: [CommonModule, PromocionesComponent,ɵEmptyOutletComponent, MenusectionComponent, NavbarComponent, HealthyFoodIconComponent, FrozenIconComponent, NutritionistIconComponent, DeliveryIconComponent, PlateIconComponent, HowItWorksComponent, PackSelectorBarComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

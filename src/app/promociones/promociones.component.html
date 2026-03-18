@@ -1,0 +1,14 @@
+<!-- Si no hay promociones activas, no renderiza nada -->
+<section *ngIf="promociones.length > 0" class="section promos-section">
+  <div class="container">
+    <h2 class="section-title">🎉 Promociones</h2>
+    <div class="promos-grid">
+      <div class="promo-card" *ngFor="let promo of promociones">
+        <span class="promo-badge" *ngIf="promo.badge">{{ promo.badge }}</span>
+        <h3 class="promo-titulo">{{ promo.titulo }}</h3>
+        <p class="promo-descripcion">{{ promo.descripcion }}</p>
+        <p class="promo-fecha" *ngIf="promo.fecha_fin">Válido hasta: {{ promo.fecha_fin }}</p>
+      </div>
+    </div>
+  </div>
+</section>
