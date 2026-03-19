@@ -26,7 +26,8 @@ toggleMenu() {
 
   menuItems = [
     { label: 'Inicio', section: 'hero-section' },
-    { label: 'Beneficios', section: 'beneficios' },
+    {label: 'Promociones', section:'promosSection'},
+    { label: 'Porque Elegirnos?', section: 'beneficios' },
     { label: 'Nosotros', section: 'nosotros' },
     { label: 'Carta', section: 'menusection' },
     { label: 'Contacto', section: 'contacto' }
