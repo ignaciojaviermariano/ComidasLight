@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PackSelectorService } from '../services/pack-selector.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-pack-selector-bar',
@@ -101,9 +102,8 @@ export class PackSelectorBarComponent implements OnInit {
 
   
   abrirWhatsApp() {
-    const mensaje = this.packService.generarMensajeWhatsApp();
-    const numero = '5492215963237'; // WhatsApp de Comidas Light
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.open(url, '_blank');
+  const mensaje = this.packService.generarMensajeWhatsApp();
+  const url = `https://wa.me/${environment.whatsappNumber}?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
   }
 }
