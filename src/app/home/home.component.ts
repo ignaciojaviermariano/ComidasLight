@@ -58,7 +58,7 @@ export class HomeComponent {
   isMenuOpen: any;
   secciones: any;
 
-  constructor(public config: ConfigService) { // 👈 NUEVO: inyectamos ConfigService
+  constructor(public config: ConfigService) {
     const phone = environment.whatsappNumber;
     const message = encodeURIComponent(environment.whatsappMessage);
     this.whatsappLink = `https://wa.me/${phone}?text=${message}`;
