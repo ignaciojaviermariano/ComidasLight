@@ -8,6 +8,13 @@
         <h3 class="promo-titulo">{{ promo.titulo }}</h3>
         <p class="promo-descripcion">{{ promo.descripcion }}</p>
         <p class="promo-fecha" *ngIf="promo.fecha_fin">Válido hasta: {{ promo.fecha_fin }}</p>
+        <a [href]="getWhatsappLink(promo)"
+           target="_blank"
+           rel="noopener"
+           class="promo-wsp-btn">
+          <img src="assets/images/wsp.png" alt="WhatsApp" width="18" height="18">
+          <span>Consultar promoción</span>
+        </a>      
       </div>
     </div>
   </div>

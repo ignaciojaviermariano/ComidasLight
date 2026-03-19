@@ -1,5 +1,5 @@
 .promos-section {
-  background-color: #f8faf8; // mismo fondo neutro que el resto de las secciones
+  background-color: #f8faf8;
   padding: 3rem 0;
 }
 
@@ -14,10 +14,12 @@
   background: white;
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); // misma sombra que benefit-card
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   position: relative;
-  border-left: 4px solid #4caf50; // verde natural en lugar del amarillo
+  border-left: 4px solid #4caf50;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;              // 👈 para que el botón quede siempre abajo
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-3px);
@@ -27,7 +29,7 @@
 
 .promo-badge {
   display: inline-block;
-  background: #4caf50;       // verde consistente con el 🌿 del hero
+  background: #4caf50;
   color: white;
   font-weight: 700;
   font-size: 0.8rem;
@@ -36,24 +38,52 @@
   margin-bottom: 0.75rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  align-self: flex-start;     // 👈 no se estira
 }
 
 .promo-titulo {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #1a1a1a;             // mismo color de texto que el resto
+  color: #1a1a1a;
 }
 
 .promo-descripcion {
   color: #555;
-  line-height: 1.6;           // un poco más aire, igual que about-description
+  line-height: 1.6;
   font-size: 0.95rem;
+  flex: 1;                    // 👈 empuja el botón hacia abajo
 }
 
 .promo-fecha {
   margin-top: 0.75rem;
   font-size: 0.82rem;
-  color: #4caf50;             // fecha en verde, no gris, para que no parezca secundaria
+  color: #4caf50;
   font-weight: 600;
+}
+
+// 👇 NUEVO
+.promo-wsp-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0.6rem 1rem;
+  background: #25d366;        // verde WhatsApp
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+  align-self: flex-start;
+
+  &:hover {
+    background: #1ebe5d;
+    transform: scale(1.02);
+  }
+
+  img {
+    filter: brightness(0) invert(1); // lo hace blanco para que combine
+  }
 }
